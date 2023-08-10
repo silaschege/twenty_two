@@ -1,0 +1,47 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <div>
+        
+          <div class="container">
+            <div class="row align-items-start">
+              <div class="col">
+                 <!-- Order Number -->
+         <div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Partner</th>
+                <th scope="col">OrderBy </th>
+                <th scope="col">order_number</th>
+                <th scope="col">Total</th>
+           
+                <th scope="col">Deliver</th>
+         
+               
+                
+              </tr>
+            </thead>
+            <tbody>
+              {% for or  in  orders %}
+              <tr>
+                <td scope="row">{{or.partner.businessName }}</td>
+                <td scope="row">{{or.orderBy  }}</td>
+                <td>{{or.order_number}}</td>
+                <td>{{or.total}}</td>
+                <td><a href="?order_number={{ or.order_number }}" type="button" class="btn btn-primary">Deliver</a></td>
+                
+              </tr>
+              {% empty %}
+              <tr><td colspan="5">Currently no Data Available</td></tr>
+              {%endfor%}
+             
+            </tbody>
+          </table>
+        </div> 
+    
+             
+              
+            </div>
+
+    </div>
+{%endblock%}   

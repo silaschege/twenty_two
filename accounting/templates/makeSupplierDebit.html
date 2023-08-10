@@ -1,0 +1,13 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+<h3>Make Supplier Payment</h3>
+    <div>
+                    <!-- make supplier payment -->
+                      <form method="post">
+                        {% csrf_token %}
+                        {{form.as_p }}
+                        <button type="submit" class="btn btn-primary">PAY</button>
+                    </form>
+    </div>
+
+{%endblock%}   

@@ -1,0 +1,14 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    Expected Payment:{{expected_payment}}ksh
+    <div class="col">
+        <!-- search for partner -->
+        <form method="post">
+           {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Pay</button>
+        </form>
+    </div>
+    {{paid_amount}}
+ 
+{%endblock%}  

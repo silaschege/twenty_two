@@ -1,0 +1,134 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+<div>
+    <h2 style="text-align: center;">Create Partner Oder Items</h2>
+
+                            <!-- product -->
+           <div class="container">
+            <div class="row align-items-start">
+                    <div class="col">
+                    <!-- search for product -->
+                    <form method="get">
+                      {% csrf_token %}
+                      {{ searchProduct.as_p }}
+                      <button type="submit" class="btn btn-primary">Search</button>
+                  </form>
+
+                  <div>
+                    <p></p>
+                    <!-- search results -->
+             <table class="table table-success">
+               <thead>
+                 <tr>
+                   <th scope="col">Name</th>
+                   <th scope="col">Price</th>
+                   <th scope="col">Quantity</th>
+                  
+                   <th></th>
+                 </tr>
+               </thead>
+               <tbody>
+                   {% for pro  in  results %}
+                 <tr>
+                   <th scope="row">{{pro.product_name }}</th>
+                   <td>{{pro.product_price}}</td>
+                   <td>{{pro.product_quantity}}</td>
+                   <td><a href="?product_id={{ pro.id }}" type="button" class="btn btn-primary">+</a></td>
+                 </tr>
+                 {% empty %}
+                 <tr><td colspan="5">Currently no Data Available</td></tr>
+                 {%endfor%}
+               </tbody>
+             </table>
+           </div>
+
+
+          
+
+              <!--  order detail Form -->
+              <h3>Item Order Details</h3>
+              <form method="post">
+                {% csrf_token %}
+                {{ orderItemForm.as_p }}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+                      </div>
+
+
+
+
+
+                    <div class="col">
+                                <!-- partner -->
+                        <div>
+                          <table class="table table-primary">
+                            <thead>
+                              <tr>
+                                <th scope="col">Partner Name</th>
+                                <th scope="col">Town</th>
+                                <th scope="col">Order Number</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody>
+                              
+                              <tr>
+                                <th scope="row">{{ordernumber.partner.businessName }}</th>
+                                <td>{{ordernumber.partner.town}}</td>
+                                <td>{{ordernumber.order_number}}</td>
+                               
+                              </tr>
+                             
+                            </tbody>
+                          </table>
+                        </div> 
+                      
+
+                                  <!-- Order Items -->
+                                  <div>
+                                    <table class="table table-primary">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Product</th>
+                                          <th scope="col">Price</th>
+                                          <th scope="col">Quantity</th>
+                                          <th scope="col">Total</th>
+                                         
+                                          
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {% for item  in  Orderitems %}
+                                        <tr>
+                                          <td scope="row">{{item.product }}</td>
+                                          <td scope="row">{{item.product.product_price }}</td>
+                                          <td>{{item.quantity}}</td>
+                                          <!-- item total multiplication -->
+                                         
+                                          <th>{% widthratio item.quantity 1 item.product.product_price %}</th>
+                                         
+                                          
+                                        </tr>
+                                        {% empty %}
+                                        <tr><td colspan="5">Currently no Data Available</td></tr>
+                                        {%endfor%}
+                                       
+                                      </tbody>
+                                    </table>
+                                  </div> 
+
+                                  <!-- total for order -->
+                                  <P style="text-align:right;color: green;block-size:10;"> Total:{{totalOrder}}</P>
+                                  <p></p>
+
+                                  <a href="{% url 'createOrderItemInstance_url' %}" type="button" class="btn btn-primary">Create order</a>
+            
+                              </div>
+                             
+                            </div>
+                            
+                        
+
+</div>
+
+{%endblock%}   

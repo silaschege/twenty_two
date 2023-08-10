@@ -1,0 +1,14 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+<div class ="mx-3">
+    <h2 >Business Type</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        
+        <button type="submit" class="btn btn-primary">Create</button>
+      
+    </form>
+</div>
+
+{%endblock%}   

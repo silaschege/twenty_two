@@ -1,0 +1,50 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+<div>
+    <h2>Create Partner Order</h2>
+
+          <!-- partner -->
+           <div class="container">
+            <div class="row align-items-start">
+                    <div class="col">
+                    <!-- search for partner -->
+                    <form method="get">
+                       {% csrf_token %}
+                        {{ searchPartner.as_p }}
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+                      </div>
+                              <div class="col">
+                                 <!-- search results -->
+                          <table class="table table-success ">
+                            <thead>
+                              <tr>
+                                <th scope="col">Partner Name</th>
+                                <th scope="col">Town</th>
+                                <th scope="col">BusinessType</th>
+                                <th></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for bus  in  results %}
+                              <tr>
+                                <th scope="row">{{bus.businessName }}</th>
+                                <td>{{bus.town}}</td>
+                                <td>{{bus.businessType}}</td>
+                                <td><a href="{% url 'createPartner_url' bus.id %}" type="button" class="btn btn-primary">Add</a></td>
+                              </tr>
+                              {% empty %}
+                              <tr><td colspan="5">Currently no Data Available</td></tr>
+                              {%endfor%}
+                            </tbody>
+                          </table>
+                              </div>
+                             
+                            </div>
+
+                         
+                            
+                        
+
+</div>
+{%endblock%}   

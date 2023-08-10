@@ -1,0 +1,125 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <h2>Receive  Merchandize Items</h2>
+<div class="container">
+    <div class="row align-items-start">
+      <div class="col">
+        <div>
+                    <!-- search product -->
+        <form method="get">
+            {% csrf_token %}
+                {{form.as_p}}
+                
+                <button type="submit" class="btn btn-primary">Search</button>
+              
+            </form>
+        </div>
+            <p></p>
+        <div>
+            <!-- search results -->
+     <table class="table table-success">
+       <thead>
+         <tr>
+           <th scope="col">Name</th>
+           <th scope="col">Description</th>
+           <th scope="col">Price</th>
+           <th scope="col">Available QTY</th>
+          
+           <th></th>
+         </tr>
+       </thead>
+       <tbody>
+           {% for pro  in  productResult %}
+         <tr>
+           <th scope="row">{{pro.product_name }}</th>
+           <td>{{pro.product_description}}</td>
+           <td>{{pro.product_price}}</td>
+           <td>{{pro.product_quantity}}</td>
+           <td><a href="?product_id={{ pro.id }}" type="button" class="btn btn-primary">+</a></td>
+         </tr>
+         {% empty %}
+         <tr><td colspan="5">Currently no Data Available</td></tr>
+         {%endfor%}
+       </tbody>
+     </table>
+    </div>
+    <!-- product form  -->
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            {{productForm.as_p}}
+            
+            <button type="submit" class="btn btn-primary">Receive</button>
+          
+        </form>
+    </div>
+
+      </div>
+      <div class="col">
+             <!-- supplier for the product -->
+        <div>
+            <table class="table table-primary">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone Number</th>
+                  <th scope="col">Kra Pin</th>
+  
+           
+                 
+                  
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr>
+                  <td scope="row">{{receivedSupplier.supplier.supplier_name }}</td>
+                  <td scope="row">{{receivedSupplier.supplier.supplier_email_address}}</td>
+                  <td scope="row">{{receivedSupplier.supplier.supplier_phone_number}}</td>
+                  <td scope="row">{{receivedSupplier.supplier.supplier_kra_pin}}</td>
+                  
+                </tr>
+                {% if empty %}
+                <tr><td colspan="5">Currently no Data Available</td></tr>
+                {% endif %}
+               
+              </tbody>
+            </table>
+          </div> 
+          <div>
+              <!-- received products -->
+     <table class="table table-primary">
+        <thead>
+          <tr>
+            <th scope="col">Product </th>
+            <th scope="col">Buying_price</th>
+            <th scope="col">Quantity</th>
+           
+         
+          </tr>
+        </thead>
+        <tbody>
+            {% for pro  in  receivedItems %}
+          <tr>
+            <th scope="row">{{pro.product  }}</th>
+            <td>{{pro.buying_price}}</td>
+            <td>{{pro.quantity}}</td>
+            
+          </tr>
+          {% empty %}
+          <tr><td colspan="5">Currently no Data Available</td></tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      <p style="color: green;text-align: right;">Total:{{orderTotal}}Ksh</p>
+          </div>
+
+               <!-- complete receiving products -->
+        <a href="{% url 'finalizeReceiveProduct_url' %}" type="button" class="btn btn-primary">Finalize</a>
+      </div>
+   
+    </div>
+</div>
+
+{%endblock%}   

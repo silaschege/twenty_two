@@ -1,0 +1,93 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <h3 style="text-align: center;">All Partner</h3>
+
+    <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col">
+            
+    <!-- partner invoice -->
+    <div>
+        <table class="table table-primary">
+          <thead>
+
+        
+            
+            <tr>
+              <th scope="col">Partner</th>
+              <th scope="col">Location</th>
+              <th scope="col">Type</th>
+              <th scope="col"></th>
+              
+       
+             
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for or  in  orderInvoice%}
+            <tr>
+              <td scope="row">{{or.order.partner.businessName }}</td>
+              <td scope="row">{{or.order.partner.businessLocation }}</td>
+              <td scope="row">{{or.order.partner.businessType }}</td>
+
+              
+              <td><a href="?partner_id={{ or.order.partner.id }}" type="button" class="btn btn-primary">Details</a></td>
+              
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Currently no Data Available</td></tr>
+            {%endfor%}
+           
+          </tbody>
+        </table>
+      </div> 
+
+          </div>
+          <div class="col">
+            
+            <div>
+                      <!-- search for supplier -->
+                      <form method="get">
+                        {% csrf_token %}
+                        {{form.as_p }}
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+            </div>
+
+            <!-- search results suppliers -->
+    <div>
+        <table class="table table-success">
+          <thead>
+            <tr>
+              <th scope="col">Partner</th>
+              <th scope="col">Location</th>
+              <th scope="col">Type</th>
+              <th scope="col"></th>
+       
+             
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for or  in  results%}
+            <tr>
+              <td scope="row">{{or.order.partner.businessName }}</td>
+              <td scope="row">{{or.order.partner.businessLocation }}</td>
+              <td scope="row">{{or.order.partner.businessType }}</td>
+              <td><a href="?partner_id={{ or.order.partner.id }}" type="button" class="btn btn-primary">Details</a></td>
+              
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Currently no Data Available</td></tr>
+            {%endfor%}
+           
+          </tbody>
+        </table>
+      </div> 
+          </div>
+         
+        </div>
+      </div>
+
+{%endblock%} 

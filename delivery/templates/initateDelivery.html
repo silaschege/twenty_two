@@ -1,0 +1,80 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <div>
+        <h3>Initiate  Delivery</h3>
+        <div>
+           
+              <!-- Order Number -->
+       <table class="table table-primary">
+         <thead>
+           <tr>
+             <th scope="col">Partner </th>
+             <th scope="col">orderNumber </th>
+             <th scope="col">deliveryMode</th> </th>
+             <th scope="col"> captain </th>
+            
+             
+            
+      
+           </tr>
+         </thead>
+         <tbody>
+             {% for pro  in  orderNumber %}
+           <tr>
+             <th scope="row">{{pro.orderNumber.partner.businessName}}</th>
+             <td scope="row">{{pro.orderNumber}}</td>
+             <td>{{pro.deliveryMode}}</td>
+             <td>{{pro.captain}}</td>
+             
+             
+            
+           
+         
+           </tr>
+           {% empty %}
+           <tr><td colspan="5">Currently no Data Available</td></tr>
+           {%endfor%}
+         </tbody>
+       </table>
+     </div>
+
+          <!-- Order Items -->
+          <div>
+            <table class="table table-primary">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
+                 
+                  
+                </tr>
+              </thead>
+              <tbody>
+                {% for item  in  orderItems %}
+                <tr>
+                  <td scope="row">{{item.product }}</td>
+                  <td scope="row">{{item.product.product_price }}</td>
+                  <td>{{item.quantity}}</td>
+                  <!-- item total multiplication -->
+                 
+                  <th>{% widthratio item.quantity 1 item.product.product_price %}</th>
+                  
+                </tr>
+                {% empty %}
+                <tr><td colspan="5">Currently no Data Available</td></tr>
+                {%endfor%}
+               
+              </tbody>
+            </table>
+          </div> 
+
+         
+
+      </div>
+      {% for pro  in  orderNumber %}
+      <a href="?order_number={{pro.orderNumber}}"button" class="btn btn-primary">Make Delivery</a>
+      {%endfor%}
+    </div>
+{%endblock%} 

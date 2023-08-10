@@ -1,0 +1,54 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+<div class ="mx-3">
+    <h2 >Add Product Category</h2>
+
+      
+      <div class="container">
+        <div class="row align-items-start">
+          <div class="col">
+            <!-- category form -->
+            <div>
+        <form method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            
+            <button type="submit" class="btn btn-primary">Create</button>
+          
+        </form>
+        </div>  
+          </div>
+          <div class="col">
+            <!-- Category -->
+    <div>
+        <table class="table table-primary">
+          <thead>
+            <tr>
+              <th scope="col">category</th>
+            
+       
+             
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for or  in  category %}
+            <tr>
+              <td scope="row">{{or.product_category_name  }}</td>
+              
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Currently no Data Available</td></tr>
+            {%endfor%}
+           
+          </tbody>
+        </table>
+      </div> 
+
+          </div>
+       
+        </div>
+  
+</div>
+
+{%endblock%}   

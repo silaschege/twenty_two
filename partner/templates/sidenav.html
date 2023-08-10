@@ -1,0 +1,162 @@
+<div class="sidebar">
+  <style>
+    .navbar-light .navbar-nav .nav-link {
+      color: black;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 200px;
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: block;
+        position: relative;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+
+    .red-text {
+      color: red;
+    }
+
+    .blue-text {
+      color: blue;
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div id="navbarNav">
+      <ul class="navbar-nav flex-column">
+        <li>
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <span class="red-text">2</span><span class="blue-text">2</span>
+            </a>
+          </div>
+        </li>
+      
+          <!-- Partner -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Partner
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link" href="{% url 'CreatePartner_url' %}">Create Partner</a>
+            <a class="nav-link" href="{% url 'CreateBusinessType_url' %}">Create Business Type</a>
+          
+          </div>
+        </li>
+
+        <!-- order -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Order
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link" href="{% url 'createPartnerOrder_url' %}">Make Order</a>
+            <a class="nav-link" href="{% url 'orderList_url' %}">Order List</a>
+          </div>
+        </li>
+        <!-- delivery -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Deliver
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="nav-link" href="{% url 'makeDelivery_url' %}">Deliver</a>
+            <a class="nav-link" href="{% url 'makeDelivery_url' %}">Reverse Captain</a>
+            <a class="nav-link" href="{% url 'addDeliveryMode_url' %}"> Add DeliveryMode</a>
+          </div>
+        </li>
+        <!-- merchandize -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Merchandize
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{% url 'receiveMerchandizeSupplier_url' %}">Receive</a>
+            <a class="dropdown-item" href="{% url 'productPricing_url' %}">Pricing</a>
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{% url 'addProductCategory_url' %}">Add Category</a>
+            <a class="dropdown-item" href="{%url 'addProduct_url' %}">Add Item</a>
+          </div>
+        </li>
+        <!-- inventory -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Inventory
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{%url 'CreatePartner_url'%}">Available</a>
+            <a class="dropdown-item" href="#">Cycle</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Option 3</a>
+          </div>
+        </li>
+
+
+        <!-- supplier -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+           Supplier
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{%url 'createSupplier_url'%}">Create</a>
+            <a class="dropdown-item" href="#">Option 2</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Option 3</a>
+          </div>
+            <!-- accounting -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Accounting
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="{%url 'AllSupplierAccounts_url' %}">Supplier</a>
+              <a class="dropdown-item" href="{%url 'allPartnerAccount_url' %}">Partner</a>
+              <a class="dropdown-item" href="#">Captain</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Option 3</a>
+            </div>
+          </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="{%url 'CreatePartner_url'%}">Option 1</a>
+            <a class="dropdown-item" href="#">Option 2</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Option 3</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<!-- Include the necessary JavaScript and CSS files -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.1/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

@@ -1,0 +1,12 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <div>
+        <h3>Add delivery Mode</h3>
+                                <!-- Add delivery Mode -->
+                                <form method="post">
+                                    {% csrf_token %}
+                                     {{ form.as_p }}
+                                     <button type="submit" class="btn btn-primary">Add</button>
+                                 </form>
+    </div>
+{%endblock%}   

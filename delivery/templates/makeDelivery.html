@@ -1,0 +1,38 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+         <div>
+            <h3>Make Delivery</h3>
+              <!-- Order Number -->
+       <table class="table table-primary">
+         <thead>
+           <tr>
+             <th scope="col">Partner </th>
+             <th scope="col">orderNumber </th>
+             <th scope="col">deliveryMode</th> </th>
+             <th scope="col"> captain </th>
+             <th scope="col">  </th>
+             
+            
+      
+           </tr>
+         </thead>
+         <tbody>
+             {% for pro  in  transitOrder %}
+           <tr>
+             <th scope="row">{{pro.orderNumber.partner.businessName}}</th>
+             <td scope="row">{{pro.orderNumber}}</td>
+             <td>{{pro.deliveryMode}}</td>
+             <td>{{pro.captain}}</td>
+             <td><a href="?order_number={{pro.orderNumber}}"button" class="btn btn-primary">Deliver</a></td>
+             
+
+           
+         
+           </tr>
+           {% empty %}
+           <tr><td colspan="5">Currently no Data Available</td></tr>
+           {%endfor%}
+         </tbody>
+       </table>
+     </div>
+{%endblock%}  

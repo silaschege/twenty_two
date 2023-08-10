@@ -1,0 +1,77 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <div>
+        
+          <div class="container">
+            <div class="row align-items-start">
+              <div class="col">
+                 <!-- Order Number -->
+         <div>
+          <table class="table table-primary">
+            <thead>
+              <tr>
+                <th scope="col">Partner</th>
+                <th scope="col">OrderBy </th>
+                <th scope="col">order_number</th>
+             
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row">{{orders.partner.businessName }}</td>
+                <td scope="row">{{orders.orderBy  }}</td>
+                <td>{{orders.order_number}}</td>
+                
+       
+              </tr>
+            </tbody>
+          </table>
+        </div> 
+          <div>
+
+            <div>
+              <!-- order items -->
+       <table class="table table-primary">
+         <thead>
+           <tr>
+             <th scope="col">orderNumber </th>
+             <th scope="col">product </th>
+             <th scope="col">quantity</th>
+             <th scope="col">total</th>
+            
+      
+           </tr>
+         </thead>
+         <tbody>
+             {% for pro  in  orderitems %}
+           <tr>
+             <th scope="row">{{pro.orderNumber  }}</th>
+             <td>{{pro.product }}</td>
+             <td>{{pro.quantity}}</td>
+              <!-- item total multiplication -->
+                                         
+            <th>{% widthratio pro.quantity 1 pro.product.product_price %}</th>
+         
+           </tr>
+           {% empty %}
+           <tr><td colspan="5">Currently no Data Available</td></tr>
+           {%endfor%}
+         </tbody>
+       </table>
+     </div>
+          </div>
+              </div>
+              <div class="col">
+                <form method="post">
+                  {% csrf_token %}
+                   {{ form.as_p }}
+                   <button type="submit" class="btn btn-primary">Dispatch</button>
+               </form>
+              </div>
+
+              
+              
+            </div>
+
+    </div>
+{%endblock%}   

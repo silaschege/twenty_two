@@ -1,0 +1,58 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <h2>Product Pricing</h2>
+
+
+    <!-- search results -->
+    <p></p>
+
+    <div>
+      <table class="table table-success">
+        <caption>Items to be priced</caption>
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Current Selling Price</th>
+            <th scope="col">Buying_price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+       
+
+     
+           
+            
+          </tr>
+        </thead>
+        <tbody>
+            {% for rec  in  receivedItems %}
+            
+          <tr>
+            <td scope="row">{{rec.product }}</td>
+            <td scope="row">{{rec.product.product_price }}</td>
+            <td scope="row">{{rec.buying_price}}</td>
+            <td scope="row">{{rec.quantity}}</td>
+            <td><a href="?product_id={{ rec.product.id }}&received_id={{ rec.id }}" type="button" class="btn btn-primary">Price</a></td>
+         
+        
+            
+          </tr>
+          {% empty %}
+          <tr><td colspan="5">Currently no Data Available</td></tr>
+          {%endfor%}
+         
+        </tbody>
+      </table>
+    </div> 
+
+    <!-- product Pricing form -->
+    <div>
+        <form method="post">
+            {% csrf_token %}
+                {{form.as_p}}
+                
+                <button type="submit" class="btn btn-primary">Update</button>
+              
+            </form>
+    </div>
+
+{%endblock%}  

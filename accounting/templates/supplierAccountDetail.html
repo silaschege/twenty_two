@@ -1,0 +1,104 @@
+{%extends 'partnerBase.html'%}
+{%block content%}
+    <h2 style="text-align: center;">Supplier Account Details</h2>
+   
+   
+
+
+      <div class="container text-center">
+        <div class="row align-items-start">
+          <div class="col">
+            <h3>Unpaid</h3>
+            <!-- details of arrears and payment -->
+            <div class="container text-center">
+                <div class="row align-items-start">
+                  <div class="col">
+                    <p style="color: Red;">Outstanding:Total ksh </p>
+                  </div>
+                  <div class="col">
+                    <a href="?supplier_id={{specificsupplier.id}}" type="button" class="btn btn-primary">Pay</a>
+                  </div>
+              
+                </div>
+              </div>
+           
+    <!-- supplier credit -->
+    <div>
+        <table class="table table-primary">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>  
+              <th scope="col">Received No</th>
+              <th scope="col">Received By</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Details</th>
+             
+       
+             
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for sup  in  supplierInvoices%}
+            <tr>
+              <td scope="row">{{sup.supplier.supplier_name  }}</td>
+              <td scope="row">{{sup.receivedcategory.id}}</td>
+              <td scope="row">{{sup.receivedby}}</td>
+              <td scope="row">{{sup.amount}}</td>
+              <td><a href="?supplier_number={{ sup.supplier.id }}" type="button" class="btn btn-success">Details</a></td>
+              
+              
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Currently no Data Available</td></tr>
+            {%endfor%}
+           
+          </tbody>
+        </table>
+      </div> 
+
+          </div>
+          <div class="col">
+            <h3>Paid</h3>
+                <!-- supplier debit -->
+    <div>
+        <table class="table table-success">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>  
+              <th scope="col">Received No</th>
+              <th scope="col">Paid By</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Details</th>
+              <th scope="col">Pay</th>
+       
+ 
+              
+            </tr>
+          </thead>
+          <tbody>
+            {% for sup  in  supplierDebit%}
+            <tr>
+              <td scope="row">{{sup.supplier.supplier_name  }}</td>
+              <td scope="row">{{sup.receivedcategory.id}}</td>
+              <td scope="row">{{sup.paidby}}</td>
+              <td scope="row">{{sup.amount}}</td>
+              <td><a href="?supplier_number={{ sup.supplier.id }}" type="button" class="btn btn-success">Details</a></td>
+              <td><a href="?invoice_id={{ sup.id }}" type="button" class="btn btn-primary">Pay</a></td>
+              
+            </tr>
+            {% empty %}
+            <tr><td colspan="5">Currently no Data Available</td></tr>
+            {%endfor%}
+           
+          </tbody>
+        </table>
+      </div> 
+            
+          </div>
+         
+        </div>
+      </div>
+
+   
+{%endblock%}   
